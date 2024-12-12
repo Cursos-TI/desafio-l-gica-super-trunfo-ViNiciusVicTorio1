@@ -1,0 +1,10 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        gcc -o /workspaces/desafio-l-gica-super-trunfo-ViNiciusVicTorio1/logicaSuperTrunfo /workspaces/desafio-l-gica-super-trunfo-ViNiciusVicTorio1/logicaSuperTrunfo.c
+        /workspaces/desafio-l-gica-super-trunfo-ViNiciusVicTorio1/logicaSuperTrunfo
+    ],
