@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int menu_interativo();
-int comparar_atributo(int escolha, float densidade_populacional1, float densidade_populacional2, int populacao1, int populacao2, float area1, float area2, float pib1, float pib2, int pontos_turisticos1, int pontos_turisticos2, float pib_per_capita1, float pib_per_capita2);
+int comparar_atributos(int escolha1, int escolha2, float densidade_populacional1, float densidade_populacional2, int populacao1, int populacao2, float area1, float area2, float pib1, float pib2, int pontos_turisticos1, int pontos_turisticos2, float pib_per_capita1, float pib_per_capita2);
 
 int main() {
     // Declaração de variáveis para armazenar dados da cidade
@@ -74,11 +74,15 @@ int main() {
 
     // Iniciar menu interativo
     while (1) {
-        int escolha = menu_interativo();
-        if (escolha == 7) {
+        int escolha1 = menu_interativo();
+        if (escolha1 == 7) {
             break;
         }
-        comparar_atributo(escolha, densidade_populacional1, densidade_populacional2, populacao1, populacao2, area1, area2, pib1, pib2, pontos_turisticos1, pontos_turisticos2, pib_per_capita1, pib_per_capita2);
+        int escolha2 = menu_interativo();
+        if (escolha2 == 7) {
+            break;
+        }
+        comparar_atributos(escolha1, escolha2, densidade_populacional1, densidade_populacional2, populacao1, populacao2, area1, area2, pib1, pib2, pontos_turisticos1, pontos_turisticos2, pib_per_capita1, pib_per_capita2);
     }
 
     return 0;
@@ -99,70 +103,40 @@ int menu_interativo() {
     return escolha;
 }
 
-int comparar_atributo(int escolha, float densidade_populacional1, float densidade_populacional2, int populacao1, int populacao2, float area1, float area2, float pib1, float pib2, int pontos_turisticos1, int pontos_turisticos2, float pib_per_capita1, float pib_per_capita2) {
-    switch (escolha) {
-        case 1:
-            printf("Densidade populacional: ");
-            if (densidade_populacional1 > densidade_populacional2) {
-                printf("Cidade 1 vence\n");
-            } else if (densidade_populacional1 < densidade_populacional2) {
-                printf("Cidade 2 vence\n");
-            } else {
-                printf("Empate\n");
-            }
-            break;
-        case 2:
-            printf("População: ");
-            if (populacao1 > populacao2) {
-                printf("Cidade 1 vence\n");
-            } else if (populacao1 < populacao2) {
-                printf("Cidade 2 vence\n");
-            } else {
-                printf("Empate\n");
-            }
-            break;
-        case 3:
-            printf("Área: ");
-            if (area1 > area2) {
-                printf("Cidade 1 vence\n");
-            } else if (area1 < area2) {
-                printf("Cidade 2 vence\n");
-            } else {
-                printf("Empate\n");
-            }
-            break;
-        case 4:
-            printf("PIB: ");
-            if (pib1 > pib2) {
-                printf("Cidade 1 vence\n");
-            } else if (pib1 < pib2) {
-                printf("Cidade 2 vence\n");
-            } else {
-                printf("Empate\n");
-            }
-            break;
-        case 5:
-            printf("Pontos turísticos: ");
-            if (pontos_turisticos1 > pontos_turisticos2) {
-                printf("Cidade 1 vence\n");
-            } else if (pontos_turisticos1 < pontos_turisticos2) {
-                printf("Cidade 2 vence\n");
-            } else {
-                printf("Empate\n");
-            }
-            break;
-        case 6:
-            printf("PIB per capita: ");
-            if (pib_per_capita1 > pib_per_capita2) {
-                printf("Cidade 1 vence\n");
-            } else if (pib_per_capita1 < pib_per_capita2) {
-                printf("Cidade 2 vence\n");
-            } else {
-                printf("Empate\n");
-            }
-            break;
-        default:
-            printf("Escolha inválida.\n");
+int comparar_atributos(int escolha1, int escolha2, float densidade_populacional1, float densidade_populacional2, int populacao1, int populacao2, float area1, float area2, float pib1, float pib2, int pontos_turisticos1, int pontos_turisticos2, float pib_per_capita1, float pib_per_capita2) {
+    int resultado1, resultado2;
+
+    // Comparação do primeiro atributo
+    resultado1 = (escolha1 == 1) ? (densidade_populacional1 > densidade_populacional2 ? 1 : (densidade_populacional1 < densidade_populacional2 ? 2 : 0)) :
+                (escolha1 == 2) ? (populacao1 > populacao2 ? 1 : (populacao1 < populacao2 ? 2 : 0)) :
+                (escolha1 == 3) ? (area1 > area2 ? 1 : (area1 < area2 ? 2 : 0)) :
+                (escolha1 == 4) ? (pib1 > pib2 ? 1 : (pib1 < pib2 ? 2 : 0)) :
+                (escolha1 == 5) ? (pontos_turisticos1 > pontos_turisticos2 ? 1 : (pontos_turisticos1 < pontos_turisticos2 ? 2 : 0)) :
+                (pib_per_capita1 > pib_per_capita2 ? 1 : (pib_per_capita1 < pib_per_capita2 ? 2 : 0));
+
+    // Comparação do segundo atributo
+    resultado2 = (escolha2 == 1) ? (densidade_populacional1 > densidade_populacional2 ? 1 : (densidade_populacional1 < densidade_populacional2 ? 2 : 0)) :
+                (escolha2 == 2) ? (populacao1 > populacao2 ? 1 : (populacao1 < populacao2 ? 2 : 0)) :
+                (escolha2 == 3) ? (area1 > area2 ? 1 : (area1 < area2 ? 2 : 0)) :
+                (escolha2 == 4) ? (pib1 > pib2 ? 1 : (pib1 < pib2 ? 2 : 0)) :
+                (escolha2 == 5) ? (pontos_turisticos1 > pontos_turisticos2 ? 1 : (pontos_turisticos1 < pontos_turisticos2 ? 2 : 0)) :
+                (pib_per_capita1 > pib_per_capita2 ? 1 : (pib_per_capita1 < pib_per_capita2 ? 2 : 0));
+
+    // Determinação do vencedor
+    if (resultado1 == 1 && resultado2 == 1) {
+        printf("Cidade 1 vence em ambos os atributos\n");
+    } else if (resultado1 == 2 && resultado2 == 2) {
+        printf("Cidade 2 vence em ambos os atributos\n");
+    } else if (resultado1 == 0 && resultado2 == 0) {
+        printf("Empate em ambos os atributos\n");
+    } else {
+        printf("Resultados mistos: ");
+        if (resultado1 == 1 || resultado2 == 1) {
+            printf("Cidade 1 vence em pelo menos um atributo\n");
+        }
+        if (resultado1 == 2 || resultado2 == 2) {
+            printf("Cidade 2 vence em pelo menos um atributo\n");
+        }
     }
     return 0;
 }
